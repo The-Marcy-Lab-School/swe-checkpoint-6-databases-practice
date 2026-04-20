@@ -6,22 +6,20 @@ This is a **practice checkpoint** for Mod 6 Databases. It covers the same topics
 - [Part 1: SQL Coding](#part-1-sql-coding)
   - [Setup](#setup)
   - [Schema Reference](#schema-reference)
-  - [Grading: Part 1 (30 pts)](#grading-part-1-30-pts)
+  - [Grading: Part 1](#grading-part-1)
   - [Expected Output](#expected-output)
 - [Part 2: Schema Design](#part-2-schema-design)
   - [Scenario](#scenario)
   - [Grading: Part 2 (22 pts)](#grading-part-2-22-pts)
-- [Part 3: Short Response](#part-3-short-response)
-  - [Grading: Part 3 (21 pts)](#grading-part-3-21-pts)
 
 ---
 
 ## Overview
 
-| Part | File | Points |
-| ---- | ---- | ------ |
-| 1 — SQL Coding | `part-1-queries.sql` | 30 pts |
-| 2 — Schema Design | `part-2-schema.sql` | 22 pts |
+| Part               | File                       | Points |
+| ------------------ | -------------------------- | ------ |
+| 1 — SQL Coding     | `part-1-queries.sql`       | 30 pts |
+| 2 — Schema Design  | `part-2-schema.sql`        | 22 pts |
 | 3 — Short Response | `part-3-short-response.md` | 21 pts |
 
 ---
@@ -32,13 +30,7 @@ You will write 18 SQL queries against a pre-built `music_db` database — no Jav
 
 ### Setup
 
-**1. Make a draft branch:**
-
-```sh
-git checkout -b draft
-```
-
-**2. Run the seed file to create and populate `music_db`:**
+**1. Run the seed file to create and populate `music_db`:**
 
 **Mac:**
 ```sh
@@ -50,7 +42,7 @@ psql -f part-1-setup.sql
 sudo -u postgres psql -f part-1-setup.sql
 ```
 
-**3. Connect to the database:**
+**2. Connect to the database:**
 
 **Mac:**
 ```sh
@@ -62,7 +54,7 @@ psql music_db
 sudo -u postgres psql music_db
 ```
 
-**4. Open `part-1-queries.sql`** and write your answer below each prompt. You can test queries directly in `psql`, or open the file in TablePlus and run them from there.
+**3. Open `part-1-queries.sql`** and write your answer below each prompt. You can test queries directly in `psql`, or open the file in TablePlus and run them from there.
 
 ---
 
@@ -101,37 +93,36 @@ album_genres
 
 ---
 
-### Grading: Part 1 (30 pts)
+### Grading: Part 1
 
 Each query is worth 1 point based on correctness. Half credit (0.5 points) is awarded for queries that use the right structure but contain minor errors.
 
-**SELECT — Basic Reads (3 pts)**
+**SELECT — Basic Reads**
 - [ ] 1. Select all columns from all artists
 - [ ] 2. Select only the title and release_year from all albums
 - [ ] 3. Select all columns from all albums, ordered by release_year newest to oldest
 
-**WHERE — Filtering Data (4 pts)**
-- [ ] 4. Select all albums released after 2015 (2 pts)
-- [ ] 5. Select all artists from 'USA' (2 pts)
+**WHERE — Filtering Data**
+- [ ] 4. Select all albums released after 2015
+- [ ] 5. Select all artists from 'USA'
 
-**INSERT, UPDATE, DELETE — Modifying Data (6 pts)**
-- [ ] 6. Insert a new artist with name 'Beyoncé' and country 'USA' (2 pts)
-- [ ] 7. Update the title of album_id = 9 to 'El Último Tour Del Mundo (Deluxe)' (2 pts)
-- [ ] 8. Delete the genre with genre_id = 6 (2 pts)
+**INSERT, UPDATE, DELETE — Modifying Data**
+- [ ] 6. Insert a new artist with name 'Beyoncé' and country 'USA'
+- [ ] 7. Update the title of album_id = 9 to 'El Último Tour Del Mundo (Deluxe)'
+- [ ] 8. Delete the genre with genre_id = 6
 
-**Aggregates — COUNT, GROUP BY, HAVING (8 pts)**
-- [ ] 9. Count the total number of albums (1 pt)
-- [ ] 10. Count albums per artist; show artist_id and album_count (2 pts)
-- [ ] 11. Show only artists who have released more than 2 albums (2 pts)
-- [ ] 12. Find the average number of albums per artist across ALL artists, rounded to 2 decimal places (3 pts)
+**Aggregates — COUNT, GROUP BY, HAVING**
+- [ ] 9. Count the total number of album
+- [ ] 10. Count albums per artist; show artist_id and album_count
+- [ ] 11. Show only artists who have released more than 2 albums
 
-**JOIN Queries (9 pts)**
-- [ ] 13. Show each album's title and its artist's name using INNER JOIN (1 pt)
-- [ ] 14. Show all artists and their album count, including zero-album artists, using LEFT JOIN (2 pts)
-- [ ] 15. Show all genre names for the album 'good kid, m.A.A.d city' (2 pts)
-- [ ] 16. Show the title and artist name of every album in the 'reggaeton' genre (1 pt)
-- [ ] 17. Show each genre name and how many albums use it, ordered by count descending (1 pt)
-- [ ] 18. Show the title of every album that has no genres (2 pts)
+**JOIN Queries**
+- [ ] 12. Show each album's title and its artist's name using INNER JOI
+- [ ] 13. Show all artists and their album count, including zero-album artists, using LEFT JOIN
+- [ ] 14. Show all genre names for the album 'good kid, m.A.A.d city'
+- [ ] 15. Show the title and artist name of every album in the 'reggaeton' genre
+- [ ] 16. Show each genre name and how many albums use it, ordered by count descending
+- [ ] 17. Show the title of every album that has no genres
 
 ---
 
@@ -139,33 +130,33 @@ Each query is worth 1 point based on correctness. Half credit (0.5 points) is aw
 
 **<details><summary>1. All artists (6 rows)</summary>**
 
-| artist_id | name           | country      | created_at           |
-| --------- | -------------- | ------------ | -------------------- |
-| 1         | Kendrick Lamar | USA          | 2024-01-05 09:00:00  |
-| 2         | Adele          | UK           | 2024-01-12 10:00:00  |
-| 3         | Bad Bunny      | Puerto Rico  | 2024-01-20 11:00:00  |
-| 4         | Tame Impala    | Australia    | 2024-02-01 09:30:00  |
-| 5         | Mitski         | USA          | 2024-02-15 14:00:00  |
-| 6         | Stromae        | Belgium      | 2024-03-01 16:00:00  |
+| artist_id | name           | country     | created_at          |
+| --------- | -------------- | ----------- | ------------------- |
+| 1         | Kendrick Lamar | USA         | 2024-01-05 09:00:00 |
+| 2         | Adele          | UK          | 2024-01-12 10:00:00 |
+| 3         | Bad Bunny      | Puerto Rico | 2024-01-20 11:00:00 |
+| 4         | Tame Impala    | Australia   | 2024-02-01 09:30:00 |
+| 5         | Mitski         | USA         | 2024-02-15 14:00:00 |
+| 6         | Stromae        | Belgium     | 2024-03-01 16:00:00 |
 
 </details>
 
 **<details><summary>2. Title and release_year from all albums (12 rows)</summary>**
 
-| title                       | release_year |
-| --------------------------- | ------------ |
-| Section.80                  | 2011         |
-| good kid, m.A.A.d city      | 2012         |
-| To Pimp a Butterfly         | 2015         |
-| DAMN.                       | 2017         |
-| 21                          | 2011         |
-| 25                          | 2015         |
-| 30                          | 2021         |
-| YHLQMDLG                    | 2020         |
-| El Último Tour Del Mundo    | 2020         |
-| Un Verano Sin Ti            | 2022         |
-| Currents                    | 2015         |
-| The Slow Rush               | 2020         |
+| title                    | release_year |
+| ------------------------ | ------------ |
+| Section.80               | 2011         |
+| good kid, m.A.A.d city   | 2012         |
+| To Pimp a Butterfly      | 2015         |
+| DAMN.                    | 2017         |
+| 21                       | 2011         |
+| 25                       | 2015         |
+| 30                       | 2021         |
+| YHLQMDLG                 | 2020         |
+| El Último Tour Del Mundo | 2020         |
+| Un Verano Sin Ti         | 2022         |
+| Currents                 | 2015         |
+| The Slow Rush            | 2020         |
 
 </details>
 
@@ -271,38 +262,28 @@ Note: order may vary.
 
 </details>
 
-**<details><summary>12. Average albums per artist across all artists (1 row)</summary>**
-
-This includes Mitski and Stromae, who have released zero albums.
-
-| avg_albums_per_artist |
-| --------------------- |
-| 2.00                  |
-
-</details>
-
-**<details><summary>13. Album titles with artist names — INNER JOIN (12 rows)</summary>**
+**<details><summary>12. Album titles with artist names — INNER JOIN (12 rows)</summary>**
 
 Note: order may vary.
 
-| title                       | name           |
-| --------------------------- | -------------- |
-| Section.80                  | Kendrick Lamar |
-| good kid, m.A.A.d city      | Kendrick Lamar |
-| To Pimp a Butterfly         | Kendrick Lamar |
-| DAMN.                       | Kendrick Lamar |
-| 21                          | Adele          |
-| 25                          | Adele          |
-| 30                          | Adele          |
-| YHLQMDLG                    | Bad Bunny      |
-| El Último Tour Del Mundo    | Bad Bunny      |
-| Un Verano Sin Ti            | Bad Bunny      |
-| Currents                    | Tame Impala    |
-| The Slow Rush               | Tame Impala    |
+| title                    | name           |
+| ------------------------ | -------------- |
+| Section.80               | Kendrick Lamar |
+| good kid, m.A.A.d city   | Kendrick Lamar |
+| To Pimp a Butterfly      | Kendrick Lamar |
+| DAMN.                    | Kendrick Lamar |
+| 21                       | Adele          |
+| 25                       | Adele          |
+| 30                       | Adele          |
+| YHLQMDLG                 | Bad Bunny      |
+| El Último Tour Del Mundo | Bad Bunny      |
+| Un Verano Sin Ti         | Bad Bunny      |
+| Currents                 | Tame Impala    |
+| The Slow Rush            | Tame Impala    |
 
 </details>
 
-**<details><summary>14. All artists with album count — LEFT JOIN (6 rows)</summary>**
+**<details><summary>13. All artists with album count — LEFT JOIN (6 rows)</summary>**
 
 | name           | album_count |
 | -------------- | ----------- |
@@ -311,23 +292,23 @@ Note: order may vary.
 | Bad Bunny      | 3           |
 | Tame Impala    | 2           |
 | Mitski         | 0           |
+| Beyoncé        | 0           |
 | Stromae        | 0           |
 
 </details>
 
-**<details><summary>15. Genres for 'good kid, m.A.A.d city' (3 rows)</summary>**
+**<details><summary>14. Genres for 'good kid, m.A.A.d city' (2 rows)</summary>**
 
-Note: order may vary.
+Note: order may vary. This reflects the removal of the "conscious rap" genre.
 
-| name          |
-| ------------- |
-| hip-hop       |
-| r&b           |
-| conscious rap |
+| name    |
+| ------- |
+| hip-hop |
+| r&b     |
 
 </details>
 
-**<details><summary>16. Albums in the 'reggaeton' genre (3 rows)</summary>**
+**<details><summary>15. Albums in the 'reggaeton' genre (3 rows)</summary>**
 
 Note: order may vary.
 
@@ -339,22 +320,21 @@ Note: order may vary.
 
 </details>
 
-**<details><summary>17. Genre names with album counts (6 rows)</summary>**
+**<details><summary>16. Genre names with album counts (5 rows)</summary>**
 
-Note: rows with the same count may appear in a different order — that's okay.
+Note: rows with the same count may appear in a different order — that's okay. Also, the "conscious rap" genre was removed in problem 8.
 
-| name              | album_count |
-| ----------------- | ----------- |
-| hip-hop           | 4           |
-| conscious rap     | 4           |
-| r&b               | 4           |
-| pop               | 3           |
-| reggaeton         | 3           |
-| psychedelic rock  | 1           |
+| name             | album_count |
+| ---------------- | ----------- |
+| hip-hop          | 4           |
+| r&b              | 4           |
+| pop              | 3           |
+| reggaeton        | 3           |
+| psychedelic rock | 1           |
 
 </details>
 
-**<details><summary>18. Albums with no genres (1 row)</summary>**
+**<details><summary>17. Albums with no genres (1 row)</summary>**
 
 | title         |
 | ------------- |
@@ -408,26 +388,3 @@ Your schema must represent:
 - [ ] Q3: Event count per organizer, ordered by count descending
 - [ ] Q4: Attendees who have RSVP'd to more than 2 events
 - [ ] Q5: Each organizer with a count of distinct attendees across all their events
-
----
-
-## Part 3: Short Response
-
-Open `part-3-short-response.md` and answer each question in complete sentences. Aim for 3–5 sentences per answer.
-
-### Grading: Part 3 (21 pts)
-
-**Technical Score:** Each of the 6 responses will be evaluated out of **3 points** based on technical accuracy and precision.
-
-| Score | Description |
-| ----- | ----------- |
-| 3     | Accurate, specific, and uses correct terminology from the lessons |
-| 2     | Mostly correct but vague, missing a key detail, or uses imprecise language |
-| 1     | Partially correct but contains a significant misconception |
-| 0     | Incorrect, off-topic, or missing |
-
-**Writing Quality Score:** The overall submission will receive up to **3 points** for writing quality — grammar, clarity, and sentence structure across all responses.
-
-**Total: 6 questions × 3 pts + 3 writing pts = 21 points**
-
-> **Any submission with typos, grammar mistakes, or other distracting errors will be marked incomplete and must be resubmitted.**

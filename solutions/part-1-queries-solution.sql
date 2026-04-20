@@ -68,32 +68,18 @@ FROM albums
 GROUP BY artist_id
 HAVING COUNT(*) > 2;
 
-
--- 12. Find the average number of albums per artist across ALL artists
---     (including artists who have released zero albums).
---     Uses a LEFT JOIN in the subquery so artists with 0 albums count as 0,
---     not as absent rows.
-SELECT ROUND(AVG(album_count), 2) AS avg_albums_per_artist
-FROM (
-  SELECT artists.artist_id, COUNT(albums.album_id) AS album_count
-  FROM artists
-  LEFT JOIN albums ON artists.artist_id = albums.artist_id
-  GROUP BY artists.artist_id
-) AS artist_album_counts;
-
-
 -- ============================================================
 -- Part 5: JOIN Queries
 -- ============================================================
 
--- 13. Show each album's title and its artist's name.
+-- 12. Show each album's title and its artist's name.
 --     Only include albums that have a matching artist (INNER JOIN).
 SELECT albums.title, artists.name
 FROM albums
 INNER JOIN artists ON albums.artist_id = artists.artist_id;
 
 
--- 14. Show all artists and their album count, including artists who have
+-- 13. Show all artists and their album count, including artists who have
 --     released zero albums (LEFT JOIN). Order by album_count descending.
 SELECT artists.name, COUNT(albums.album_id) AS album_count
 FROM artists
@@ -102,7 +88,7 @@ GROUP BY artists.artist_id
 ORDER BY album_count DESC;
 
 
--- 15. Show the name of every genre associated with the album titled
+-- 14. Show the name of every genre associated with the album titled
 --     'good kid, m.A.A.d city'.
 SELECT genres.name
 FROM genres
@@ -111,7 +97,7 @@ INNER JOIN albums ON album_genres.album_id = albums.album_id
 WHERE albums.title = 'good kid, m.A.A.d city';
 
 
--- 16. Show the title and artist name of every album in the 'reggaeton' genre.
+-- 15. Show the title and artist name of every album in the 'reggaeton' genre.
 SELECT albums.title, artists.name
 FROM albums
 INNER JOIN album_genres ON albums.album_id = album_genres.album_id
@@ -120,7 +106,7 @@ INNER JOIN artists ON albums.artist_id = artists.artist_id
 WHERE genres.name = 'reggaeton';
 
 
--- 17. Show each genre name and how many albums use it.
+-- 16. Show each genre name and how many albums use it.
 --     Order by album_count from highest to lowest.
 SELECT genres.name, COUNT(album_genres.album_id) AS album_count
 FROM genres
@@ -129,7 +115,7 @@ GROUP BY genres.genre_id
 ORDER BY album_count DESC;
 
 
--- 18. Show the title of every album that has no genres.
+-- 17. Show the title of every album that has no genres.
 SELECT albums.title
 FROM albums
 LEFT JOIN album_genres ON albums.album_id = album_genres.album_id

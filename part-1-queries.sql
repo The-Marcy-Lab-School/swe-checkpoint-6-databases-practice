@@ -64,42 +64,33 @@
 --     more than 2 albums. Include the album count.
 --     Name the count column album_count.
 
-
--- 12. Find the average number of albums per artist across ALL artists
---     (including artists who have released zero albums).
---     Round to 2 decimal places. Name the column avg_albums_per_artist.
---
---     Hint: you will need a subquery. Wrap your GROUP BY query as a
---     derived table and call AVG() on the count column.
-
-
 -- ============================================================
 -- Part 5: JOIN Queries
 -- ============================================================
 
--- 13. Show each album's title and its artist's name.
+-- 12. Show each album's title and its artist's name.
 --     Only include albums that have a matching artist (use INNER JOIN).
 --     Show title and name.
 
 
--- 14. Show all artists and their album count, including artists who have
+-- 13. Show all artists and their album count, including artists who have
 --     released zero albums (use LEFT JOIN).
 --     Show name and album_count. Order by album_count descending.
 
 
--- 15. Show the name of every genre associated with the album titled
+-- 14. Show the name of every genre associated with the album titled
 --     'good kid, m.A.A.d city'.
 --     Show only the genre name column.
 
 
--- 16. Show the title and artist name of every album in the 'reggaeton' genre.
+-- 15. Show the title and artist name of every album in the 'reggaeton' genre.
 --     Show title and name.
 
 
--- 17. Show each genre name and how many albums use it.
+-- 16. Show each genre name and how many albums use it.
 --     Name the count column album_count.
 --     Order by album_count from highest to lowest.
 
 
--- 18. Show the title of every album that has no genres.
+-- 17. Show the title of every album that has no genres.
 --     Hint: use a LEFT JOIN on album_genres and filter for NULL.
