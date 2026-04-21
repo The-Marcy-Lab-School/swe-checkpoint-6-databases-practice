@@ -387,4 +387,6 @@ Your schema must represent:
 - [ ] Q2: Attendees for a specific event — name and RSVP status
 - [ ] Q3: Event count per organizer, ordered by count descending
 - [ ] Q4: Attendees who have RSVP'd to more than 2 events
-- [ ] Q5: Each organizer with a count of distinct attendees across all their events
+
+**Bonus**
+- [ ] Each organizer with a count of distinct attendees across all their events
